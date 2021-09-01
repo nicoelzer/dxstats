@@ -135,12 +135,12 @@ function TokenPage({ address, history }) {
   const volume =
     oneDayVolumeUSD || oneDayVolumeUSD === 0
       ? formattedNum(
-          oneDayVolumeUSD === 0 ? oneDayVolumeUT : oneDayVolumeUSD,
-          true
-        )
+        oneDayVolumeUSD === 0 ? oneDayVolumeUT : oneDayVolumeUSD,
+        true
+      )
       : oneDayVolumeUSD === 0
-      ? "$0"
-      : "-";
+        ? "$0"
+        : "-";
 
   // mark if using untracked volume
   const [usingUtVolume, setUsingUtVolume] = useState(false);
@@ -156,8 +156,8 @@ function TokenPage({ address, history }) {
   const liquidity = totalLiquidityUSD
     ? formattedNum(totalLiquidityUSD, true)
     : totalLiquidityUSD === 0
-    ? "$0"
-    : "-";
+      ? "$0"
+      : "-";
   const liquidityChange = formattedPercent(liquidityChangeUSD);
 
   // transactions
@@ -203,7 +203,7 @@ function TokenPage({ address, history }) {
               style={{ width: "fit-content" }}
               color={backgroundColor}
               external
-              href={"https://etherscan.io/address/" + address}
+              href={getExplorerLink(selectedNetwork, address, "address")}
             >
               <Text
                 style={{ marginLeft: ".15rem" }}
@@ -390,8 +390,8 @@ function TokenPage({ address, history }) {
                       {oneDayTxns
                         ? localNumber(oneDayTxns)
                         : oneDayTxns === 0
-                        ? 0
-                        : "-"}
+                          ? 0
+                          : "-"}
                     </TYPE.main>
                     <TYPE.main>{txnChangeFormatted}</TYPE.main>
                   </RowBetween>

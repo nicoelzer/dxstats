@@ -53,24 +53,21 @@ export function getPoolLink(
     return (
       `https://swapr.eth.link/#/` +
       (remove ? `remove` : `add`) +
-      `/${
-        token0Address === nativeCurrencyWrapper.symbol
-          ? nativeCurrency
-          : token0Address
+      `/${token0Address === nativeCurrencyWrapper.symbol
+        ? nativeCurrency
+        : token0Address
       }/${nativeCurrency}?chainId=${ChainId[selectedNetwork]}`
     );
   } else {
     return (
       `https://swapr.eth.link/#/` +
       (remove ? `remove` : `add`) +
-      `/${
-        token0Address === nativeCurrencyWrapper.symbol
-          ? nativeCurrency
-          : token0Address
-      }/${
-        token1Address === nativeCurrencyWrapper.symbol
-          ? nativeCurrency
-          : token1Address
+      `/${token0Address === nativeCurrencyWrapper.symbol
+        ? nativeCurrency
+        : token0Address
+      }/${token1Address === nativeCurrencyWrapper.symbol
+        ? nativeCurrency
+        : token1Address
       }?chainId=${ChainId[selectedNetwork]}`
     );
   }
@@ -86,15 +83,13 @@ export function getSwapLink(
   if (!token1Address) {
     return `https://swapr.eth.link/#/swap?inputCurrency=${token0Address}&chainId=${ChainId[selectedNetwork]}`;
   } else {
-    return `https://swapr.eth.link/#/swap?inputCurrency=${
-      token0Address === nativeCurrencyWrapper.symbol
+    return `https://swapr.eth.link/#/swap?inputCurrency=${token0Address === nativeCurrencyWrapper.symbol
         ? nativeCurrency
         : token0Address
-    }&outputCurrency=${
-      token1Address === nativeCurrencyWrapper.symbol
+      }&outputCurrency=${token1Address === nativeCurrencyWrapper.symbol
         ? nativeCurrency
         : token1Address
-    }&chainId=${ChainId[selectedNetwork]}`;
+      }&chainId=${ChainId[selectedNetwork]}`;
   }
 }
 
@@ -102,11 +97,12 @@ const getExplorerPrefix = (selectedNetwork) => {
   switch (selectedNetwork) {
     case SupportedNetwork.XDAI:
       return "https://blockscout.com/poa/xdai";
+    case SupportedNetwork.ARBITRUM_ONE:
+      return "https://arbiscan.io";
     default:
-      return `https://${
-        ETHERSCAN_PREFIXES[selectedNetwork] ||
+      return `https://${ETHERSCAN_PREFIXES[selectedNetwork] ||
         ETHERSCAN_PREFIXES[SupportedNetwork.MAINNET]
-      }etherscan.io`;
+        }etherscan.io`;
   }
 };
 
